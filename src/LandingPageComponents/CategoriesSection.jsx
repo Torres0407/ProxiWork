@@ -1,7 +1,4 @@
-export default function CategoriesSection() {
-
-// ============= CATEGORIES SECTION =============
-const CategoriesSection = ({ categories }) => {
+export default function CategoriesSection({ categories }){
   return (
     <section className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -23,4 +20,3 @@ const CategoriesSection = ({ categories }) => {
     </section>
   );
 };
-}

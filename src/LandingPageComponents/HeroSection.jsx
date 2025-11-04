@@ -1,9 +1,6 @@
 import { Search } from "lucide-react";
 
-export default function HeroSection() {
-    
-// ============= HERO SECTION COMPONENT =============
-const HeroSection = ({ userType, onUserTypeChange }) => {
+export default function HeroSection({ userType, onUserTypeChange }) {
   return (
     <section className="bg-gradient-to-br from-blue-50 to-indigo-100 py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -50,4 +47,3 @@ const HeroSection = ({ userType, onUserTypeChange }) => {
     </section>
   );
 };
-}

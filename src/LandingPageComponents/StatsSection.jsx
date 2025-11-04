@@ -1,8 +1,6 @@
 import { Award, Briefcase, TrendingUp, Users } from 'lucide-react';
 import StatCard from '../Components/StatCard.jsx';
 export default function StatsSection() {
-    // ============= STATS SECTION COMPONENT =============
-const StatsSection = () => {
   const stats = [
     { icon: Briefcase, value: '10,000+', label: 'Active Jobs' },
     { icon: Users, value: '50,000+', label: 'Registered Users' },
@@ -22,4 +20,3 @@ const StatsSection = () => {
     </section>
   );
 };
-}

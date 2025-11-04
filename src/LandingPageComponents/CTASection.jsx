@@ -1,7 +1,4 @@
-export default function CTASection() {
-
-// ============= CTA SECTION =============
-const CTASection = () => {
+export default function CTASection(){
   return (
     <section className="py-20 bg-gradient-to-r from-blue-600 to-indigo-700">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -23,4 +20,3 @@ const CTASection = () => {
     </section>
   );
 };
-}

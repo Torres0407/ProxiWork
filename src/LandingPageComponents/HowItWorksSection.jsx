@@ -1,9 +1,7 @@
 import { Briefcase, Search, Shield, Users } from "lucide-react";
 import StepCard from "../Components/StepCard";
 
-export default function HowItWorksSection() {
-// ============= HOW IT WORKS SECTION =============
-const HowItWorksSection = () => {
+export default function HowItWorksSection(){
   const steps = [
     {
       step: '01',
@@ -52,4 +50,3 @@ const HowItWorksSection = () => {
     </section>
   );
 };
-}

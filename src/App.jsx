@@ -1,11 +1,11 @@
 import { BrowserRouter, Route, Routes } from "react-router";
-import ProxiWorkApp from "./LandingPageComponents/ProxiWorkApp";
+import Homepage from "./Pages/LandingPage";
 
 export default function App() {
   return(
    <BrowserRouter>
    <Routes>
-    <Route path="/" element={<ProxiWorkApp/>} />
+    <Route path="/" element= {<Homepage/>}/>
     </Routes>
     </BrowserRouter>
   )

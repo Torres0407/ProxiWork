@@ -1,8 +1,17 @@
 import { Award, Briefcase, Clock, MapPin, Shield, Star, TrendingUp, Users } from 'lucide-react';
 import { useState } from 'react';
+import Footer from '../Components/Footer';
+import Header from '../Components/Header';
+import TestimonialSection from '../Components/TestimonialSection';
+import CategoriesSection from '../LandingPageComponents/CategoriesSection';
+import CTASection from '../LandingPageComponents/CTASection';
+import FeaturedJobsSection from '../LandingPageComponents/FeaturedJobsSection';
+import HeroSection from '../LandingPageComponents/HeroSection';
+import HowItWorksSection from '../LandingPageComponents/HowItWorksSection';
+import StatsSection from '../LandingPageComponents/StatsSection';
 
 // ============= MAIN APP COMPONENT =============
-export default function ProxiWorkApp() {
+export default function Homepage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [userType, setUserType] = useState('client');
 

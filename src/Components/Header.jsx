@@ -1,7 +1,4 @@
-import { Briefcase, Menu } from "lucide-react";
-
-export default function Header() {
-    
+import { Briefcase, Menu, X } from "lucide-react";
 // ============= HEADER COMPONENT =============
 const Header = ({ onMenuToggle, mobileMenuOpen }) => {
   return (
@@ -59,4 +56,4 @@ const Header = ({ onMenuToggle, mobileMenuOpen }) => {
   );
 };
 
-}
+export default Header;

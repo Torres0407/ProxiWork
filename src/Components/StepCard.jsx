@@ -1,4 +1,4 @@
-export default function StepCard() {
+
 // ============= STEP CARD COMPONENT =============
 const StepCard = ({ step, title, description, icon: Icon }) => {
   return (
@@ -16,4 +16,4 @@ const StepCard = ({ step, title, description, icon: Icon }) => {
     </div>
   );
 };
-}
+export default StepCard;

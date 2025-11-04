@@ -1,5 +1,3 @@
-export default function CategoryCard() {
-// ============= CATEGORY CARD COMPONENT =============
 const CategoryCard = ({ name, count, icon: Icon }) => {
   return (
     <button className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition text-center group">
@@ -11,4 +9,4 @@ const CategoryCard = ({ name, count, icon: Icon }) => {
     </button>
   );
 };
-}
+export default CategoryCard;

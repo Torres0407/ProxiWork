@@ -1,9 +1,6 @@
 export { DollarSign, MapPin, Users } from 'lucide-react';
 
-export default function JobCard() {
-
-// ============= JOB CARD COMPONENT =============
-const JobCard = ({ title, category, budget, location, postedTime, proposals, description, skills }) => {
+export default function JobCard({ title, category, budget, location, postedTime, proposals, description, skills }) {
   return (
     <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition">
       <div className="flex justify-between items-start mb-4">
@@ -49,4 +46,3 @@ const JobCard = ({ title, category, budget, location, postedTime, proposals, des
     </div>
   );
 };
-}

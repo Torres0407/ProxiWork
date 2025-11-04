@@ -2,7 +2,7 @@ import { Briefcase } from 'lucide-react';
 
 export default function Footer() {
 // ============= FOOTER COMPONENT =============
-const Footer = () => {
+
   return (
     <footer className="bg-gray-900 text-gray-300 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -52,5 +52,5 @@ const Footer = () => {
       </div>
     </footer>
   );
-};
+
 }

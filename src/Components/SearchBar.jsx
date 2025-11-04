@@ -1,9 +1,6 @@
 import { MapPin, Search } from "lucide-react";
 
-export default function SearchBar() {
-
-// ============= SEARCH BAR COMPONENT =============
-const SearchBar = ({ userType }) => {
+export default function SearchBar ({ userType }) {
   return (
     <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-2 flex flex-col md:flex-row gap-2">
       <div className="flex-1 flex items-center px-4 border-r border-gray-200">
@@ -28,4 +25,3 @@ const SearchBar = ({ userType }) => {
     </div>
   );
 };
-}

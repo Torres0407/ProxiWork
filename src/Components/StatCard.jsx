@@ -1,4 +1,3 @@
-export default function StatsCard() {
 // ============= STAT CARD COMPONENT =============
 const StatCard = ({ icon: Icon, value, label }) => {
   return (
@@ -13,4 +12,4 @@ const StatCard = ({ icon: Icon, value, label }) => {
     </div>
   );
 };
-}
+export default StatCard;

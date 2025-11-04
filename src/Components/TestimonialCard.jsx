@@ -1,6 +1,4 @@
 import { Star } from 'lucide-react';
-export default function TestimonialCard() {
-
 // ============= TESTIMONIAL CARD COMPONENT =============
 const TestimonialCard = ({ name, role, rating, comment, avatar }) => {
   return (
@@ -27,4 +25,4 @@ const TestimonialCard = ({ name, role, rating, comment, avatar }) => {
     </div>
   );
 };
-}
+export default TestimonialCard;

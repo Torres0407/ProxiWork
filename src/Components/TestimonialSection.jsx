@@ -1,4 +1,3 @@
-export default function TestimonialSection() {
 // ============= TESTIMONIAL SECTION =============
 const TestimonialSection = ({ testimonials }) => {
   return (
@@ -22,4 +21,4 @@ const TestimonialSection = ({ testimonials }) => {
     </section>
   );
 };
-}
+export default TestimonialSection;

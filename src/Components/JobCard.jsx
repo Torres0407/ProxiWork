@@ -1,4 +1,4 @@
-export { DollarSign, MapPin, Users } from 'lucide-react';
+import { DollarSign, MapPin, Users } from "lucide-react";
 
 export default function JobCard({ title, category, budget, location, postedTime, proposals, description, skills }) {
   return (

@@ -1,3 +1,5 @@
+import TestimonialCard from "./TestimonialCard";
+
 // ============= TESTIMONIAL SECTION =============
 const TestimonialSection = ({ testimonials }) => {
   return (

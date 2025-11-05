@@ -1,3 +1,5 @@
+import CategoryCard from "../Components/CategoryCard";
+
 export default function CategoriesSection({ categories }){
   return (
     <section className="py-20 bg-gray-50">

@@ -41,7 +41,7 @@ export default function HeroSection({ userType, onUserTypeChange }) {
           </div>
 
           {/* Search Bar */}
-          <Search userType={userType} />
+          <Search usertype={userType} />
         </div>
       </div>
     </section>

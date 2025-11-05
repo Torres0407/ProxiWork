@@ -1,4 +1,5 @@
 import { ChevronRight } from "lucide-react";
+import JobCard from "../Components/JobCard";
 
 export default function FeaturedJobsSection({ jobs }) {
   return (

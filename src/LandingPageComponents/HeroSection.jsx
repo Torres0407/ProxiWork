@@ -1,4 +1,4 @@
-import { Search } from "lucide-react";
+import SearchBar from "../Components/SearchBar";
 
 export default function HeroSection({ userType, onUserTypeChange }) {
   return (
@@ -41,7 +41,7 @@ export default function HeroSection({ userType, onUserTypeChange }) {
           </div>
 
           {/* Search Bar */}
-          <Search usertype={userType} />
+          <SearchBar usertype={userType} />
         </div>
       </div>
     </section>

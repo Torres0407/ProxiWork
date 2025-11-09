@@ -1,116 +1,118 @@
-import { Award, Briefcase, Clock, MapPin, Shield, Star, TrendingUp, Users } from 'lucide-react';
-import { useState } from 'react';
-import Footer from '../Components/Footer';
-import Header from '../Components/Header';
-import TestimonialSection from '../Components/TestimonialSection';
-import CategoriesSection from '../LandingPageComponents/CategoriesSection';
-import CTASection from '../LandingPageComponents/CTASection';
-import FeaturedJobsSection from '../LandingPageComponents/FeaturedJobsSection';
-import HeroSection from '../LandingPageComponents/HeroSection';
-import HowItWorksSection from '../LandingPageComponents/HowItWorksSection';
-import StatsSection from '../LandingPageComponents/StatsSection';
+import { Bolt, Briefcase } from "lucide-react";
+import { useState } from "react";
+import Button from "../Components/Button";
+import Footer from "../Components/Footer";
+import Header from "../Components/Header";
+import Modal from "../Components/Modal";
+import BrowseSection from "../LandingPageComponents/BrowseSection";
+import CategoriesSection from "../LandingPageComponents/CategoriesSection";
+import CTASection from "../LandingPageComponents/CTASection";
+import FeaturesSection from "../LandingPageComponents/FeaturesSection";
+import HeroSection from "../LandingPageComponents/HeroSection";
+import StatsSection from "../LandingPageComponents/StatsSection";
+import TrustSection from "../LandingPageComponents/TrustSection";
 
-// ============= MAIN APP COMPONENT =============
-export default function Homepage() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [userType, setUserType] = useState('client');
+export default function LandingPage() {
+  const [modalState, setModalState] = useState({ login: false, signup: false, browse: false });
 
-  const featuredJobs = [
-    {
-      id: 1,
-      title: 'Full Stack Web Developer',
-      category: 'Digital',
-      budget: '₦150,000 - ₦300,000',
-      location: 'Remote',
-      postedTime: '2 hours ago',
-      proposals: 12,
-      description: 'Looking for an experienced developer to build an e-commerce platform.',
-      skills: ['React', 'Node.js', 'MongoDB']
-    },
-    {
-      id: 2,
-      title: 'Professional Plumber',
-      category: 'Local Service',
-      budget: '₦50,000 - ₦80,000',
-      location: 'Lekki, Lagos',
-      postedTime: '5 hours ago',
-      proposals: 8,
-      description: 'Need a skilled plumber for bathroom and kitchen renovation.',
-      skills: ['Plumbing', 'Installation', 'Repair']
-    },
-    {
-      id: 3,
-      title: 'Graphic Designer for Brand',
-      category: 'Digital',
-      budget: '₦80,000 - ₦120,000',
-      location: 'Remote',
-      postedTime: '1 day ago',
-      proposals: 24,
-      description: 'Create complete brand identity including logo and guidelines.',
-      skills: ['Illustrator', 'Branding', 'Logo']
-    }
-  ];
+  const openModal = (type) => setModalState({ ...modalState, [type]: true });
+  const closeModal = (type) => setModalState({ ...modalState, [type]: false });
 
-  const categories = [
-    { name: 'Web Development', count: 234, icon: Briefcase },
-    { name: 'Graphic Design', count: 189, icon: Users },
-    { name: 'Content Writing', count: 156, icon: Star },
-    { name: 'Plumbing', count: 98, icon: MapPin },
-    { name: 'Electrical', count: 87, icon: Clock },
-    { name: 'Tutoring', count: 145, icon: Award },
-    { name: 'Photography', count: 76, icon: TrendingUp },
-    { name: 'Carpentry', count: 65, icon: Shield }
-  ];
+  const handleLogin = (e) => {
+    e.preventDefault();
+    alert("Login functionality would connect to your backend. Redirecting to dashboard...");
+    closeModal("login");
+  };
 
-  const testimonials = [
-    {
-      name: 'Adewale Johnson',
-      role: 'Business Owner',
-      rating: 5,
-      comment: 'Found an amazing developer for my e-commerce site. The process was smooth and professional!',
-      avatar: 'AJ'
-    },
-    {
-      name: 'Chioma Okafor',
-      role: 'Freelance Designer',
-      rating: 5,
-      comment: 'ProxiWork helped me land consistent clients. I\'ve tripled my income in 6 months!',
-      avatar: 'CO'
-    },
-    {
-      name: 'Ibrahim Musa',
-      role: 'Electrician',
-      rating: 5,
-      comment: 'As a local service provider, this platform connected me with clients I never would have reached.',
-      avatar: 'IM'
-    }
-  ];
+  const handleSignup = (e) => {
+    e.preventDefault();
+    const userType = e.target.userType.value;
+    alert(`Welcome! ${userType === "freelancer" ? "Start browsing jobs" : "Post your first job"}`);
+    closeModal("signup");
+  };
+
+  const handlePostJob = (type) => {
+    alert(`Opening form to post a new ${type}...`);
+    closeModal("browse");
+  };
 
   return (
-    <div className="min-h-screen bg-white">
-      <Header 
-        onMenuToggle={() => setMobileMenuOpen(!mobileMenuOpen)}
-        mobileMenuOpen={mobileMenuOpen}
-      />
-      
-      <HeroSection 
-        userType={userType}
-        onUserTypeChange={setUserType}
-      />
-      
+    <>
+    <div className="min-h-screen">
+      <Header onOpenModal={openModal} />
+      <HeroSection onOpenModal={openModal} />
+      <FeaturesSection />
       <StatsSection />
-      
-      <FeaturedJobsSection jobs={featuredJobs} />
-      
-      <HowItWorksSection />
-      
-      <CategoriesSection categories={categories} />
-      
-      <TestimonialSection testimonials={testimonials} />
-      
-      <CTASection />
-      
+      <CategoriesSection />
+      <BrowseSection />
+      <TrustSection />
+      <CTASection onOpenModal={openModal} />
       <Footer />
+
+      {/* Modals */}
+      <Modal isOpen={modalState.login} onClose={() => closeModal("login")} title="Welcome Back">
+        <form onSubmit={handleLogin} className="space-y-4">
+          <div>
+            <label className="block mb-2 font-semibold text-gray-700">Email Address</label>
+            <input type="email" required placeholder="your@email.com" className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-orange-600 focus:outline-none" />
+          </div>
+          <div>
+            <label className="block mb-2 font-semibold text-gray-700">Password</label>
+            <input type="password" required placeholder="••••••••" className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-orange-600 focus:outline-none" />
+          </div>
+          <Button variant="filled" className="w-full mt-6">Login</Button>
+          <p className="text-center text-gray-600 mt-2">
+            Don't have an account?{" "}
+            <button type="button" onClick={() => { closeModal("login"); openModal("signup"); }} className="text-orange-600 font-semibold hover:underline">Sign Up</button>
+          </p>
+        </form>
+      </Modal>
+
+      <Modal isOpen={modalState.signup} onClose={() => closeModal("signup")} title="Create Your Account">
+        <form onSubmit={handleSignup} className="space-y-4">
+          <div>
+            <label className="block mb-2 font-semibold text-gray-700">Full Name</label>
+            <input type="text" required placeholder="Your Name" className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-orange-600 focus:outline-none" />
+          </div>
+          <div>
+            <label className="block mb-2 font-semibold text-gray-700">Email Address</label>
+            <input type="email" required placeholder="your@email.com" className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-orange-600 focus:outline-none" />
+          </div>
+          <div>
+            <label className="block mb-2 font-semibold text-gray-700">I am a:</label>
+            <select name="userType" required className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-orange-600 focus:outline-none">
+              <option value="">Select User Type</option>
+              <option value="freelancer">Freelancer</option>
+              <option value="client">Client/Business</option>
+            </select>
+          </div>
+          <div>
+            <label className="block mb-2 font-semibold text-gray-700">Password</label>
+            <input type="password" required placeholder="••••••••" className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-orange-600 focus:outline-none" />
+          </div>
+          <Button variant="filled" className="w-full mt-6">Create Account</Button>
+          <p className="text-center text-gray-600 mt-2">
+            Already have an account?{" "}
+            <button type="button" onClick={() => { closeModal("signup"); openModal("login"); }} className="text-orange-600 font-semibold hover:underline">Login</button>
+          </p>
+        </form>
+      </Modal>
+
+      <Modal isOpen={modalState.browse} onClose={() => closeModal("browse")} title="What would you like to do?">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="bg-gradient-to-br from-orange-600 to-orange-500 text-white p-6 rounded-xl cursor-pointer hover:scale-105 transition-transform duration-300" onClick={() => handlePostJob("gig")}>
+            <Bolt size={32} className="mb-3" />
+            <h3 className="text-xl font-bold mb-2">Post a Gig</h3>
+            <p className="text-sm opacity-90">One-time task (Quick work)</p>
+          </div>
+          <div className="bg-gradient-to-br from-blue-900 to-blue-700 text-white p-6 rounded-xl cursor-pointer hover:scale-105 transition-transform duration-300" onClick={() => handlePostJob("contract")}>
+            <Briefcase size={32} className="mb-3" />
+            <h3 className="text-xl font-bold mb-2">Post a Job</h3>
+            <p className="text-sm opacity-90">Contract (Longer term)</p>
+          </div>
+        </div>
+      </Modal>
     </div>
+    </>
   );
 }

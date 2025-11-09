@@ -1,12 +1,12 @@
-const CategoryCard = ({ name, count, icon: Icon }) => {
+// Category Card Component
+const CategoryCard = ({ icon: Icon, name, gradient }) => {
   return (
-    <button className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition text-center group">
-      <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-600 transition">
-        <Icon className="text-blue-600 group-hover:text-white transition" size={28} />
-      </div>
-      <h3 className="font-bold text-gray-900 mb-1">{name}</h3>
-      <p className="text-gray-600 text-sm">{count} jobs</p>
-    </button>
+    <div 
+      className={`${gradient} text-white p-8 rounded-xl text-center cursor-pointer transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl`}
+    >
+      <Icon size={32} className="mx-auto mb-3" />
+      <p className="font-semibold">{name}</p>
+    </div>
   );
 };
 export default CategoryCard;

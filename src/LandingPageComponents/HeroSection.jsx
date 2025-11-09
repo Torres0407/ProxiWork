@@ -1,49 +1,42 @@
-import SearchBar from "../Components/SearchBar";
-
-export default function HeroSection({ userType, onUserTypeChange }) {
+import { CheckCircle } from 'lucide-react';
+import Button from '../Components/Button.jsx';
+// Hero Section Component
+const HeroSection = ({ onOpenModal }) => {
   return (
-    <section className="bg-gradient-to-br from-blue-50 to-indigo-100 py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-            Connect, Work, and Grow
-            <span className="block text-blue-600">Locally & Digitally</span>
-          </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            Nigeria's premier marketplace for freelancers and local service providers. 
-            Find opportunities or hire talent for your next project.
-          </p>
-
-          {/* User Type Toggle */}
-          <div className="flex justify-center mb-8">
-            <div className="bg-white rounded-lg p-1 shadow-md inline-flex">
-              <button
-                onClick={() => onUserTypeChange('client')}
-                className={`px-6 py-3 rounded-lg font-medium transition ${
-                  userType === 'client' 
-                    ? 'bg-blue-600 text-white' 
-                    : 'text-gray-700 hover:bg-gray-100'
-                }`}
-              >
-                I'm Hiring
-              </button>
-              <button
-                onClick={() => onUserTypeChange('provider')}
-                className={`px-6 py-3 rounded-lg font-medium transition ${
-                  userType === 'provider' 
-                    ? 'bg-blue-600 text-white' 
-                    : 'text-gray-700 hover:bg-gray-100'
-                }`}
-              >
-                I'm Working
-              </button>
-            </div>
-          </div>
-
-          {/* Search Bar */}
-          <SearchBar usertype={userType} />
+    <section className="bg-gradient-to-br from-orange-600 to-blue-900 text-white py-20 px-4 min-h-[600px] flex items-center justify-center relative overflow-hidden">
+      {/* Decorative circles */}
+      <div className="absolute w-96 h-96 bg-white opacity-10 rounded-full -top-24 -right-24"></div>
+      <div className="absolute w-72 h-72 bg-white opacity-5 rounded-full -bottom-12 -left-12"></div>
+      
+      <div className="relative z-10 max-w-4xl text-center">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 animate-slideDown">
+          Find Work. Get Paid. Build Your Empire.
+        </h1>
+        <p className="text-lg sm:text-xl mb-8 opacity-95 animate-slideUp">
+          The trusted Nigerian marketplace connecting talented freelancers with opportunities
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button variant="primary" onClick={() => onOpenModal('browse')}>
+            Post a Gig
+          </Button>
+          <Button variant="secondary" onClick={() => onOpenModal('browse')}>
+            Find Work
+          </Button>
         </div>
+        <p className="mt-8 text-sm sm:text-base opacity-90 flex flex-wrap justify-center gap-4">
+          <span className="flex items-center gap-2">
+            <CheckCircle size={20} /> 100% Secure Payments
+          </span>
+          <span className="flex items-center gap-2">
+            <CheckCircle size={20} /> Trusted Reviews
+          </span>
+          <span className="flex items-center gap-2">
+            <CheckCircle size={20} /> Nigerian Freelancers
+          </span>
+        </p>
       </div>
     </section>
   );
 };
+
+export default HeroSection;

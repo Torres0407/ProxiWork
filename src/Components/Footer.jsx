@@ -1,56 +1,73 @@
-import { Briefcase } from 'lucide-react';
+import { Briefcase, Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
 
 export default function Footer() {
 // ============= FOOTER COMPONENT =============
 
-  return (
-    <footer className="bg-gray-900 text-gray-300 py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
-          <div>
-            <div className="flex items-center space-x-2 mb-4">
-              <Briefcase className="text-blue-500" size={28} />
-              <span className="text-xl font-bold text-white">ProxiWork</span>
-            </div>
-            <p className="text-gray-400">
-              Connecting talent with opportunity across Nigeria.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="text-white font-bold mb-4">For Clients</h4>
-            <ul className="space-y-2">
-              <li><a href="#" className="hover:text-blue-400 transition">Post a Job</a></li>
-              <li><a href="#" className="hover:text-blue-400 transition">Browse Talent</a></li>
-              <li><a href="#" className="hover:text-blue-400 transition">How It Works</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-white font-bold mb-4">For Freelancers</h4>
-            <ul className="space-y-2">
-              <li><a href="#" className="hover:text-blue-400 transition">Find Jobs</a></li>
-              <li><a href="#" className="hover:text-blue-400 transition">Create Profile</a></li>
-              <li><a href="#" className="hover:text-blue-400 transition">Success Stories</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-white font-bold mb-4">Company</h4>
-            <ul className="space-y-2">
-              <li><a href="#" className="hover:text-blue-400 transition">About Us</a></li>
-              <li><a href="#" className="hover:text-blue-400 transition">Contact</a></li>
-              <li><a href="#" className="hover:text-blue-400 transition">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-blue-400 transition">Terms of Service</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
-          <p>&copy; 2025 ProxiWork. All rights reserved. Portfolio Project.</p>
-        </div>
-      </div>
-    </footer>
-  );
-
+   const footerSections = [
+     {
+       title: 'For Freelancers',
+       links: ['Find Jobs', 'How It Works', 'Earn Money', 'Withdraw Funds']
+     },
+     {
+       title: 'For Clients',
+       links: ['Post a Job', 'Find Talent', 'How It Works', 'Pricing']
+     },
+     {
+       title: 'Support',
+       links: ['Help Center', 'Contact Us', 'Safety Tips', 'Terms & Conditions']
+     }
+   ];
+ 
+   const socialLinks = [
+     { icon: Facebook, href: '#' },
+     { icon: Twitter, href: '#' },
+     { icon: Instagram, href: '#' },
+     { icon: Linkedin, href: '#' }
+   ];
+ 
+   return (
+     <footer className="bg-gray-900 text-white py-12 px-4">
+       <div className="max-w-7xl mx-auto">
+         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+           <div>
+             <div className="flex items-center mb-4">
+               <Briefcase className="text-orange-600 mr-2" size={28} />
+               <span className="text-2xl font-extrabold">ProxiWork</span>
+             </div>
+             <p className="text-gray-400 mb-4">The trusted marketplace for Nigerian freelancers and businesses.</p>
+             <p className="text-gray-500 text-sm">© 2024 ProxiWork. All rights reserved.</p>
+           </div>
+           {footerSections.map((section, index) => (
+             <div key={index}>
+               <h4 className="font-bold mb-4">{section.title}</h4>
+               <ul className="space-y-3">
+                 {section.links.map((link, linkIndex) => (
+                   <li key={linkIndex}>
+                     <a href="#" className="text-gray-400 hover:text-orange-600 transition-colors duration-300">
+                       {link}
+                     </a>
+                   </li>
+                 ))}
+               </ul>
+             </div>
+           ))}
+         </div>
+ 
+         <div className="border-t border-gray-800 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+           <p>Follow us on social media</p>
+           <div className="flex gap-4">
+             {socialLinks.map((social, index) => (
+               <a 
+                 key={index}
+                 href={social.href}
+                 className="w-10 h-10 bg-orange-600 rounded-full flex items-center justify-center hover:bg-blue-900 transition-all duration-300 transform hover:-translate-y-1"
+               >
+                 <social.icon size={20} />
+               </a>
+             ))}
+           </div>
+         </div>
+       </div>
+     </footer>
+   );
 }

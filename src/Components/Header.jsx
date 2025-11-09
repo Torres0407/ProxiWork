@@ -1,59 +1,93 @@
 import { Briefcase, Menu, X } from "lucide-react";
-// ============= HEADER COMPONENT =============
-const Header = ({ onMenuToggle, mobileMenuOpen }) => {
+import { useEffect, useState } from "react";
+import Button from "./Button";
+
+// Navigation Component
+const Header = ({ onOpenModal }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navLinks = [
+    { name: 'Features', href: '#features' },
+    { name: 'Browse', href: '#browse' },
+    { name: 'Categories', href: '#categories' },
+    { name: 'Trust & Safety', href: '#trust' }
+  ];
+
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        <div className="flex justify-between items-center">
-          <div className="flex items-center space-x-2">
-            <Briefcase className="text-blue-600" size={32} />
-            <span className="text-2xl font-bold text-gray-900">ProxiWork</span>
+    <nav className={`sticky top-0 z-50 bg-white transition-shadow duration-300 ${isScrolled ? 'shadow-lg' : 'shadow-sm'}`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center py-4">
+          {/* Logo */}
+          <div className="flex items-center">
+            <Briefcase className="text-orange-600 mr-2" size={32} />
+            <span className="text-2xl font-extrabold text-orange-600">ProxiWork</span>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <a href="#jobs" className="text-gray-700 hover:text-blue-600 transition">Find Jobs</a>
-            <a href="#talent" className="text-gray-700 hover:text-blue-600 transition">Find Talent</a>
-            <a href="#how-it-works" className="text-gray-700 hover:text-blue-600 transition">How It Works</a>
-            <a href="#pricing" className="text-gray-700 hover:text-blue-600 transition">Pricing</a>
-          </div>
+          <ul className="hidden md:flex space-x-8">
+            {navLinks.map(link => (
+              <li key={link.name}>
+                <a 
+                  href={link.href}
+                  className="text-gray-700 hover:text-orange-600 font-medium transition-colors duration-300"
+                >
+                  {link.name}
+                </a>
+              </li>
+            ))}
+          </ul>
 
-          <div className="hidden md:flex items-center space-x-4">
-            <button className="text-gray-700 hover:text-blue-600 transition font-medium">
-              Sign In
-            </button>
-            <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
-              Get Started
-            </button>
+          {/* Desktop Buttons */}
+          <div className="hidden md:flex space-x-4">
+            <Button variant="outline" onClick={() => onOpenModal('login')}>
+              Login
+            </Button>
+            <Button variant="filled" onClick={() => onOpenModal('signup')}>
+              Sign Up
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
           <button 
-            onClick={onMenuToggle}
             className="md:hidden text-gray-700"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
 
         {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 space-y-4">
-            <a href="#jobs" className="block text-gray-700 hover:text-blue-600">Find Jobs</a>
-            <a href="#talent" className="block text-gray-700 hover:text-blue-600">Find Talent</a>
-            <a href="#how-it-works" className="block text-gray-700 hover:text-blue-600">How It Works</a>
-            <a href="#pricing" className="block text-gray-700 hover:text-blue-600">Pricing</a>
-            <button className="w-full text-left text-gray-700 hover:text-blue-600 font-medium">
-              Sign In
-            </button>
-            <button className="w-full bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">
-              Get Started
-            </button>
+        {isMenuOpen && (
+          <div className="md:hidden pb-4 space-y-4 animate-fadeIn">
+            {navLinks.map(link => (
+              <a 
+                key={link.name}
+                href={link.href}
+                className="block text-gray-700 hover:text-orange-600 font-medium py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {link.name}
+              </a>
+            ))}
+            <div className="flex flex-col space-y-2 pt-4">
+              <Button variant="outline" onClick={() => { onOpenModal('login'); setIsMenuOpen(false); }}>
+                Login
+              </Button>
+              <Button variant="filled" onClick={() => { onOpenModal('signup'); setIsMenuOpen(false); }}>
+                Sign Up
+              </Button>
+            </div>
           </div>
         )}
-      </nav>
-    </header>
+      </div>
+    </nav>
   );
 };
-
 export default Header;
